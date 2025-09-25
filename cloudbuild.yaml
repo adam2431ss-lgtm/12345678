@@ -1,0 +1,10 @@
+# Cloud Build configuration for automatic deployment from GitHub
+steps:
+  # Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [
+      'build', 
+      '--tag', 'gcr.io/$PROJECT_ID/replit-scraper:$COMMIT_SHA',
+      '--tag', 'gcr.io/$PROJECT_ID/replit-scraper:latest',
+      '.'
+    ]
